@@ -19,11 +19,11 @@
 #and this notice must be preserved on all copies.
 
 
-CFLAGS = -g
-CC = cc
+CFLAGS = -g -O
+CC = gcc
 # OLDCC should not be the GNU C compiler.
-OLDCC = cc
-BISON = bison
+OLDCC = gcc
+BISON = \xdjgpp.v1\bin\bison
 AR = ar
 SHELL = /bin/sh
 
@@ -115,8 +115,8 @@ gcc: gcc.o version.o $(LIBDEPS)
 gcc.o: gcc.c $(CONFIG_H)
 	$(CC) $(CFLAGS) -c -DSTANDARD_EXEC_PREFIX=\"$(libdir)/gcc-\" gcc.c
 
-cc1: $(OBJS) $(LIBDEPS)
-	$(CC) $(CFLAGS) $(LDFLAGS) -o cc1 $(OBJS) $(LIBS)
+cc1: $(OBJS) $(LIBDEPS) sdbout_filename.o
+	$(CC) $(CFLAGS) $(LDFLAGS) -o cc1 $(OBJS) sdbout_filename.o $(LIBS) 
 
 #Library of arithmetic subroutines
 # Don't compile this with gcc!
@@ -212,50 +212,50 @@ recog.o : recog.c $(CONFIG_H) $(RTL_H)  \
 
 insn-config.h : md genconfig
 	./genconfig md > tmp-insn-config.h
-	./move-if-change tmp-insn-config.h insn-config.h
+	sh ./move-if-change tmp-insn-config.h insn-config.h
 
 insn-flags.h : md genflags
 	./genflags md > tmp-insn-flags.h
-	./move-if-change tmp-insn-flags.h insn-flags.h
+	sh ./move-if-change tmp-insn-flags.h insn-flags.h
 
 insn-codes.h : md gencodes
 	./gencodes md > tmp-insn-codes.h
-	./move-if-change tmp-insn-codes.h insn-codes.h
+	sh ./move-if-change tmp-insn-codes.h insn-codes.h
 
 insn-emit.o : insn-emit.c $(CONFIG_H) $(RTL_H) expr.h insn-config.h
 	$(CC) $(CFLAGS) -c insn-emit.c
 
 insn-emit.c : md genemit
 	./genemit md > tmp-insn-emit.c
-	./move-if-change tmp-insn-emit.c insn-emit.c
+	sh ./move-if-change tmp-insn-emit.c insn-emit.c
 
 insn-recog.o : insn-recog.c $(CONFIG_H) $(RTL_H) insn-config.h
 	$(CC) $(CFLAGS) -c insn-recog.c
 
 insn-recog.c : md genrecog
 	./genrecog md > tmp-insn-recog.c
-	./move-if-change tmp-insn-recog.c insn-recog.c
+	sh ./move-if-change tmp-insn-recog.c insn-recog.c
 
 insn-extract.o : insn-extract.c $(RTL_H)
 	$(CC) $(CFLAGS) -c insn-extract.c
 
 insn-extract.c : md genextract
 	./genextract md > tmp-insn-extract.c
-	./move-if-change tmp-insn-extract.c insn-extract.c
+	sh ./move-if-change tmp-insn-extract.c insn-extract.c
 
 insn-peep.o : insn-peep.c $(CONFIG_H) $(RTL_H) regs.h
 	$(CC) $(CFLAGS) -c insn-peep.c
 
 insn-peep.c : md genpeep
 	./genpeep md > tmp-insn-peep.c
-	./move-if-change tmp-insn-peep.c insn-peep.c
+	sh ./move-if-change tmp-insn-peep.c insn-peep.c
 
 insn-output.o : insn-output.c $(CONFIG_H) $(RTL_H) regs.h insn-config.h insn-flags.h conditions.h output.h aux-output.c
 	$(CC) $(CFLAGS) -c insn-output.c
 
 insn-output.c : md genoutput
 	./genoutput md > tmp-insn-output.c
-	./move-if-change tmp-insn-output.c insn-output.c
+	sh ./move-if-change tmp-insn-output.c insn-output.c
 
 # Now the programs that generate those files.
 

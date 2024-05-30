@@ -18,15 +18,20 @@ can know your rights and responsibilities.  It should be in a
 file named COPYING.  Among other things, the copyright notice
 and this notice must be preserved on all copies.  */
 
-#include "tm-i386.h"
+//#include "tm-i386.h"
 
 /* Use the BSD assembler syntax.  */
 
 #include "tm-bsd386.h"
 
+#if 1
 /* By default, target has a 80387.  */
 
 #define TARGET_DEFAULT 1
+#else
+/* By default, target does not have a 80387.  */
+#define TARGET_DEFAULT 0
+#endif
 
 /* Specify predefined symbols in preprocessor.  */
 

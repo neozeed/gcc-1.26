@@ -38,7 +38,7 @@ and this notice must be preserved on all copies.  */
 #else
 #ifndef VMS
 #include <sys/time.h>
-#include <sys/resource.h>
+//#include <sys/resource.h>
 #endif
 #endif
 
@@ -259,6 +259,7 @@ int dump_time;
 int
 gettime ()
 {
+#if 0
 #ifdef USG
   struct tms tms;
 #else
@@ -290,6 +291,9 @@ gettime ()
   times (&vms_times);
   return (vms_times.proc_user_time + vms_times.proc_system_time) * 10000;
 #endif
+#endif
+#else
+return 0;
 #endif
 }
 
@@ -1543,6 +1547,7 @@ main (argc, argv, envp)
 
   compile_file (filename);
 
+#if 0
 #ifndef USG
 #ifndef VMS
   if (print_mem_flag)
@@ -1558,6 +1563,7 @@ main (argc, argv, envp)
     }
 #endif /* not VMS */
 #endif /* not USG */
+#endif
 
   if (errorcount)
     exit (FATAL_EXIT_CODE);

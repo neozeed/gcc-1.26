@@ -22,6 +22,10 @@ and this notice must be preserved on all copies.  */
 
 #include "tm-i386.h"
 
+/* By default, target does not have a 80387.  */
+
+#define TARGET_DEFAULT 0
+
 /* Use the Sequent Symmetry assembler syntax.  */
 
 #define TARGET_VERSION printf (" (80386, BSD syntax)");

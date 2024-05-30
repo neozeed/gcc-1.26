@@ -33,7 +33,7 @@ and this notice must be preserved on all copies.  */
 #define SUCCESS_EXIT_CODE 0
 #define FATAL_EXIT_CODE 33
 
-#define USG
+#define USG 1
 
 /* target machine dependencies.
    tm.h is a symbolic link to the actual target specific file.   */

@@ -59,7 +59,7 @@ extern int errno;
 #endif
 
 /* Cause the `yydebug' variable to be defined.  */
-#define YYDEBUG
+#define YYDEBUG 1
 %}
 
 %start program
