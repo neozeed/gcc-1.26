@@ -1032,7 +1032,7 @@ read_rtx (infile)
 	      ungetc (c, infile);
 	      list_counter++;
 	      rtx_list_link = (struct rtx_list *)
-		alloca (sizeof (struct rtx_list));
+		malloc (sizeof (struct rtx_list));
 	      rtx_list_link->value = read_rtx (infile);
 	      if (next_rtx == 0)
 		list_rtx = rtx_list_link;

@@ -4,3 +4,4 @@
 #define bzero(a,b) memset (a,0,b)
 #define bcmp(a,b,c) memcmp (a,b,c)
 typedef char *caddr_t;
+#define alloca malloc

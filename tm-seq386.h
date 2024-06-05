@@ -24,7 +24,8 @@ and this notice must be preserved on all copies.  */
 
 #include "tm-bsd386.h"
 
-#if 1
+#undef TARGET_DEFAULT
+#if 0
 /* By default, target has a 80387.  */
 
 #define TARGET_DEFAULT 1

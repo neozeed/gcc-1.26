@@ -125,16 +125,19 @@ typedef unsigned char U_CHAR;
 #undef bzero
 #undef bcmp
 
+#include <stdio.h>
+#include <ctype.h>
+#include <fcntl.h>
+#include <time.h>
 #include <sys/types.h>
 #include <sys/stat.h>
-#include <ctype.h>
-#include <stdio.h>
+
 
 #ifndef VMS
-#include <sys/file.h>
+//#include <sys/file.h>
 #ifndef USG
-#include <sys/time.h>		/* for __DATE__ and __TIME__ */
-#include <sys/resource.h>
+//#include <sys/time.h>		/* for __DATE__ and __TIME__ */
+//#include <sys/resource.h>
 #else
 #define index strchr
 #define rindex strrchr
@@ -5004,7 +5007,7 @@ char *
 xmalloc (size)
      int size;
 {
-  extern char *malloc ();
+//  extern char *malloc ();
   register char *ptr = malloc (size);
   if (ptr != 0) return (ptr);
   memory_full ();
@@ -5027,7 +5030,7 @@ char *
 xcalloc (number, size)
      int number, size;
 {
-  extern char *malloc ();
+//  extern char *malloc ();
   register int total = number * size;
   register char *ptr = malloc (total);
   if (ptr != 0)

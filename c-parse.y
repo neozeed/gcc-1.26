@@ -1286,7 +1286,7 @@ int check_newline ();
 void
 init_lex ()
 {
-  extern char *malloc ();
+//  extern char *malloc ();
 
   /* Start it at 0, because check_newline is called at the very beginning
      and will increment it to 1.  */

@@ -37,7 +37,7 @@ and this notice must be preserved on all copies.  */
 #include <time.h>   /* Correct for hpux at least.  Is it good on other USG?  */
 #else
 #ifndef VMS
-#include <sys/time.h>
+//#include <sys/time.h>
 //#include <sys/resource.h>
 #endif
 #endif
